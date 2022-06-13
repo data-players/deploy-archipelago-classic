@@ -9,7 +9,7 @@ RUN apk add --update --no-cache autoconf bash libtool automake python alpine-sdk
 
 RUN yarn global add pm2
 
-COPY ../../archipelago/middleware /app
+COPY ../../../archipelago/middleware /app
 
 WORKDIR /app/middleware
 

@@ -10,7 +10,7 @@ RUN apk add --update --no-cache autoconf bash libtool automake python alpine-sdk
 
 RUN yarn global add serve
 
-COPY ../../archipelago/frontend/ /app
+COPY ../../../archipelago/frontend/ /app
 
 WORKDIR /app/frontend
 
