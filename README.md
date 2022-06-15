@@ -7,6 +7,7 @@ However, if you want to custom your own archipelago use this repos https://githu
 
 First make sur you get docker and docker-compose install on your server
 Make sure you have an usable domain name, then create 2 sub-domain for middleware and frontend (Exemple data.myDomain.com and myDomain.com)
+Of course you need a server working with linux.
 
 ### 1 Fork the Deploye repo
 
