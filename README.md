@@ -1,4 +1,4 @@
-# deploye-archipelago-classic
+# Deploye-archipelago-classic
 
 If you need to deploye a classic archipelago with no/low modification, this isthe good place to be.
 However, if you want to custom your own archipelago use this repos https://github.com/data-players/deploy-archipelago-custom
