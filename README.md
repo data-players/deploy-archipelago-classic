@@ -6,10 +6,11 @@ However, if you want to custom your own archipelago use this repos https://githu
 ### introduction
 
 First make sur you get docker and docker-compose install on your server
+Make sure you have an usable domain name, then create 2 sub-domain for middleware and frontend (Exemple data.myDomain.com and myDomain.com)
 
 ### 1 Fork the Deploye repo
 
-Fork this project to get your own version.
+Fork this project to get your own version. git@github.com:data-players/deploy-archipelago-classic.git
 If you need a simple archipelago copy you just need to open and use the "docker-compose.yaml" classic version (Forget the custom one).
 
 ### 2 Change exemple variable
@@ -56,6 +57,3 @@ Create a new file name App.js in the public directory
 - line 16 add this line theme.palette.primary.main = "select your css color"
 
 Save and enjoy !
-
-## Deploye a custom archipelago version
-
