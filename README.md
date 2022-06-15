@@ -46,7 +46,7 @@ Grontalution !
 
 If the only think you need to change is the app, logo and appBar color you don't need to create a custom archipelago.
 Uncomment line 77 -> 80 in the docker-compose file 
-Use the public directory the repo to put your logo adn App.js (exemple here : )
+Use the public directory in the repo to put your logo adn App.js (exemple here : https://github.com/data-players/deploy-archipelago-public-exemple)
 
 ### Logo
 Put your logo inside this directory and name it MyLogo.png (of course you can change the name in the docker-compose file if the extension isn't the good one)
