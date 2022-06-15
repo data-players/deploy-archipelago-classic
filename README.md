@@ -56,4 +56,9 @@ Create a new file name App.js in the public directory
 - line 21 change the title app name to get a new titlein your app bar
 - line 16 add this line theme.palette.primary.main = "select your css color"
 
+### Tab title and icon (New)
+Now you can change tab title and icon by adding 2 file in the public directory. You can look in the git exemple above.
+Add your favicon in the directory and rename it myFavicon.ico
+Add your index.html and rename it myIndex.html (take the one in exemple if it's easier) and juste replace YourTabTitle line 18 by your title.
+
 Save and enjoy !
