@@ -1,9 +1,9 @@
-# deploye-archipelago
-repos proposant différente manière de déployer archipelago avec docker-compose. Avec ou sans fork
+# deploye-archipelago-classic
 
-## Déploiement simple d'un archipelago sans modification (Exepté pour le logo et la couleur)
+If you need to deploye a classic archipelago with no/low modification, this isthe good place to be.
+However, if you want to custom your own archipelago use this repos https://github.com/data-players/deploy-archipelago-custom
 
-### introductio
+### introduction
 
 First make sur you get docker and docker-compose install on your server
 
@@ -45,7 +45,7 @@ Grontalution !
 
 If the only think you need to change is the app, logo and appBar color you don't need to create a custom archipelago.
 Uncomment line 77 -> 80 in the docker-compose file 
-Create a public directory next to deploye-archipelago one.
+Use the public directory the repo to put your logo adn App.js (exemple here : )
 
 ### Logo
 Put your logo inside this directory and name it MyLogo.png (of course you can change the name in the docker-compose file if the extension isn't the good one)
@@ -58,3 +58,4 @@ Create a new file name App.js in the public directory
 Save and enjoy !
 
 ## Deploye a custom archipelago version
+

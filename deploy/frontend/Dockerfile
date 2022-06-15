@@ -20,13 +20,8 @@ RUN git clone https://github.com/assemblee-virtuelle/archipelago.git /archipelag
 
 RUN git checkout $SELECTED_BRANCH
 
-ADD app /archipelago/frontend
 WORKDIR /archipelago/frontend
 
 RUN yarn install
-
-RUN yarn run build
-
-EXPOSE 4000
 
 CMD serve -s build -l 4000
