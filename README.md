@@ -1,11 +1,11 @@
 # Deploye-archipelago-classic
 
-If you need to deploye a classic archipelago with no/low modification, this isthe good place to be.
+If you need to deploye a classic archipelago with no/low modification, this is the good place to be.
 However, if you want to custom your own archipelago use this repos https://github.com/data-players/deploy-archipelago-custom
 
 ### introduction
 
-First make sur you get docker and docker-compose install on your server
+First make sur you get docker and docker-compose install on your server.
 Make sure you have an usable domain name, then create 2 sub-domain for middleware and frontend (Exemple data.myDomain.com and myDomain.com)
 Of course you need a server working with linux.
 
@@ -18,7 +18,7 @@ If you need a simple archipelago copy you just need to open and use the "docker-
 
 Some variables in the docker-compose file are default values. You need to replace them with yours to make it works.
 - line 19 myEmail@myemail.fr
-- line 40 MyFusekiPassword
+- line 40 MyJenaPassword
 - line 57 MyJenaPassword
 - line 58 https://data.myDomain.com/ middleware URL
 - line 68 data.myDomain.com (middleware domain name)
