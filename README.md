@@ -5,11 +5,13 @@ However, if you want to custom your own archipelago use this repos https://githu
 
 ### Introduction
 
-#### Prerequisite
-
 First make sur you get docker and docker-compose install on your server.
 Make sure you have an usable domain name, then create 2 sub-domain for middleware and frontend (Exemple data.myDomain.com and myDomain.com)
 Of course you need a server working with linux.
+
+### 1 Fork the Deploye repo
+
+Fork this project to get your own version and work on it.
 
 #### Local test
 
@@ -25,10 +27,6 @@ You will get an error when creating some organisation :
 index.js:209 Error: @semapps/geo-components : No access token in mapbox configuration
 ```
 This is because MapBox Access Token is not define in the docker-compose file. This is not really a problem for local testing.
-
-### 1 Fork the Deploye repo
-
-Fork this project to get your own version and work on it.
 
 ### 2 Change exemple variable
 
