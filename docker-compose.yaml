@@ -2,7 +2,6 @@ version: '3.5'
 services:
   traefik:
     image: "traefik:v2.3"
-    container_name: fuseki-classic
     networks:
       - semapps
     command:
@@ -28,6 +27,7 @@ services:
 
   fuseki:
     image: semapps/jena-fuseki-webacl
+    container_name: fuseki-classic
     volumes:
       - ./data/fuseki:/fuseki
       - ./data/staging:/staging
@@ -72,11 +72,11 @@ services:
       context: ./deploy/frontend
       dockerfile: Dockerfile
     #volumes:
-    #  - ./addOn/MyLogo.png:/archipelago/frontend/addOn/logo192.png
-    #  - ./addOn/MyLogo.png:/archipelago/frontend/addOn/logo512.png
+    #  - ./addOn/MyLogo.png:/archipelago/frontend/public/logo192.png
+    #  - ./addOn/MyLogo.png:/archipelago/frontend/public/logo512.png
     #  - ./addOn/App.js:/archipelago/frontend/src/App.js
-    #  - ./addOn/myFavicon.ico:/archipelago/frontend/addOn/favicon.ico
-    #  - ./addOn/myIndex.html:/archipelago/frontend/addOn/index.html
+    #  - ./addOn/myFavicon.ico:/archipelago/frontend/public/favicon.ico
+    #  - ./addOn/myIndex.html:/archipelago/frontend/public/index.html
     environment:
       - REACT_APP_MIDDLEWARE_URL=https://data.myDomain.com/
       - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken
