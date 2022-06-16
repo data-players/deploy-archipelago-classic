@@ -70,12 +70,12 @@ services:
     build:
       context: ./deploy/frontend
       dockerfile: Dockerfile
-    volumes:
-      - ../addOn/MyLogo.png:/archipelago/frontend/addOn/logo192.png
-      - ../addOn/MyLogo.png:/archipelago/frontend/addOn/logo512.png
-      - ../addOn/App.js:/archipelago/frontend/src/App.js
-      - ../addOn/myFavicon.ico:/archipelago/frontend/addOn/favicon.ico
-      - ../addOn/myIndex.html:/archipelago/frontend/addOn/index.html
+    #volumes:
+    #  - ../addOn/MyLogo.png:/archipelago/frontend/addOn/logo192.png
+    #  - ../addOn/MyLogo.png:/archipelago/frontend/addOn/logo512.png
+    #  - ../addOn/App.js:/archipelago/frontend/src/App.js
+    #  - ../addOn/myFavicon.ico:/archipelago/frontend/addOn/favicon.ico
+    #  - ../addOn/myIndex.html:/archipelago/frontend/addOn/index.html
     environment:
       - REACT_APP_MIDDLEWARE_URL=https://data.myDomain.com/
       - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken
