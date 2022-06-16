@@ -21,9 +21,13 @@ Some variables in the docker-compose file are default values. You need to replac
 - line 57 MyJenaPassword
 - line 58 https://data.myDomain.com/ (middleware URL)
 - line 68 data.myDomain.com (middleware domain name)
-- line 82 https://data.myDomain.com/ (middleware URL)
-- line 83 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
-- line 92 myDomain.com (Your domain name)
+- line 84 https://data.myDomain.com/ (middleware URL)
+- line 85 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
+- line 94 myDomain.com (Your domain name)
+
+- line 60 myOidcClient 
+-  option 1 : replace by "semapps-dp" and contact data-players to redirect your URI (contact@data-players.com)
+-  option 2 : contact "les communs" to create your own OIDC client on https://chat.lescommuns.org/home canal "accueil" (it's a rocket chat)
 
 Of course you have to set up your domain name and sub domain name in your domain provider to make it works !
 
@@ -42,7 +46,7 @@ Grontalution !
 
 ### 4 Minor change on Archipelago
 
-To change some  app, logo and appBar color you don't need to create a custom archipelago.
+If you want minor frontend change you can follow this step. Exemples : App Title, App Bar Color, Tab title and favicon.
 Uncomment line 77 -> 80 in the docker-compose file 
 Use the addOn directory in the repo to put your logo, App.js,index.html and favicon.ico (exemple here : https://github.com/data-players/deploy-archipelago-addon-exemple)
 
