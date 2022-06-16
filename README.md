@@ -32,15 +32,15 @@ This is because MapBox Access Token is not define in the docker-compose file. Th
 
 Some variables in the docker-compose file are default values. You need to replace them with yours to make it works.
 - line 18 myEmail@myemail.fr
-- line 38 MyJenaPassword
-- line 54 MyJenaPassword
-- line 55 https://data.myDomain.com/ (middleware URL)
-- line 65 data.myDomain.com (middleware domain name)
-- line 80 https://data.myDomain.com/ (middleware URL)
-- line 81 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
-- line 90 myDomain.com (Your domain name)
+- line 39 MyJenaPassword
+- line 55 MyJenaPassword
+- line 56 https://data.myDomain.com/ (middleware URL)
+- line 66 data.myDomain.com (middleware domain name)
+- line 81 https://data.myDomain.com/ (middleware URL)
+- line 82 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
+- line 91 myDomain.com (Your domain name)
 
-- line 57 myOidcClient 
+- line 58 myOidcClient 
   - option 1 : replace by "semapps-dp" and contact data-players to redirect your URI (contact@data-players.com)
   - option 2 : contact "les communs" to create your own OIDC client on https://chat.lescommuns.org/home canal "accueil" (it's a rocket chat)
 
