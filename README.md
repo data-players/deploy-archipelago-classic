@@ -11,8 +11,7 @@ Of course you need a server working with linux.
 
 ### 1 Fork the Deploye repo
 
-Fork this project to get your own version. git@github.com:data-players/deploy-archipelago-classic.git
-If you need a simple archipelago copy you just need to open and use the "docker-compose.yaml" classic version (Forget the custom one).
+Fork this project to get your own version and work on it.
 
 ### 2 Change exemple variable
 
@@ -26,19 +25,17 @@ Some variables in the docker-compose file are default values. You need to replac
 - line 83 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
 - line 92 myDomain.com (Your domain name)
 
-Of course you have to set up ur domain name and sub domain name to make it works !
+Of course you have to set up your domain name and sub domain name in your domain provider to make it works !
 
-### 3 Try it yourself
+### 3 Launch your archipelago
 
 Launch your app by making a 
+
 ```
-docker-compose build
+docker-compose up -d
 ```
 
-then launch your app
-```
-docker-compose up -d --force-recreate
-```
+If you need to force dockers to restart add : --force-recreate
 
 Now it's time to check your domain name in your faforite browser !
 Grontalution !
@@ -47,7 +44,7 @@ Grontalution !
 
 If the only think you need to change is the app, logo and appBar color you don't need to create a custom archipelago.
 Uncomment line 77 -> 80 in the docker-compose file 
-Use the public directory in the repo to put your logo adn App.js (exemple here : https://github.com/data-players/deploy-archipelago-public-exemple)
+Use the addOn directory in the repo to put your logo, App.js,index.html and favicon.ico (exemple here : https://github.com/data-players/deploy-archipelago-addon-exemple)
 
 ### Logo
 Put your logo inside this directory and name it MyLogo.png (of course you can change the name in the docker-compose file if the extension isn't the good one)
