@@ -26,8 +26,8 @@ Some variables in the docker-compose file are default values. You need to replac
 - line 94 myDomain.com (Your domain name)
 
 - line 60 myOidcClient 
--   option 1 : replace by "semapps-dp" and contact data-players to redirect your URI (contact@data-players.com)
--   option 2 : contact "les communs" to create your own OIDC client on https://chat.lescommuns.org/home canal "accueil" (it's a rocket chat)
+  - option 1 : replace by "semapps-dp" and contact data-players to redirect your URI (contact@data-players.com)
+  - option 2 : contact "les communs" to create your own OIDC client on https://chat.lescommuns.org/home canal "accueil" (it's a rocket chat)
 
 Of course you have to set up your domain name and sub domain name in your domain provider to make it works !
 
