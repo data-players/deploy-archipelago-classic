@@ -40,23 +40,29 @@ If you need to force dockers to restart add : --force-recreate
 Now it's time to check your domain name in your faforite browser !
 Grontalution !
 
-### 4 Change your App bar color, App name and logo
+### 4 Minor change on Archipelago
 
-If the only think you need to change is the app, logo and appBar color you don't need to create a custom archipelago.
+To change some  app, logo and appBar color you don't need to create a custom archipelago.
 Uncomment line 77 -> 80 in the docker-compose file 
 Use the addOn directory in the repo to put your logo, App.js,index.html and favicon.ico (exemple here : https://github.com/data-players/deploy-archipelago-addon-exemple)
 
-### Logo
+#### Exemple
+
+##### Logo
 Put your logo inside this directory and name it MyLogo.png (of course you can change the name in the docker-compose file if the extension isn't the good one)
 
-### Color and Title
+##### Color and Title
 Create a new file name App.js in the public directory
 - line 21 change the title app name to get a new titlein your app bar
 - line 16 add this line theme.palette.primary.main = "select your css color"
 
-### Tab title and icon (New)
+##### Tab title and icon
 Now you can change tab title and icon by adding 2 file in the public directory. You can look in the git exemple above.
 Add your favicon in the directory and rename it myFavicon.ico
 Add your index.html and rename it myIndex.html (take the one in exemple if it's easier) and juste replace YourTabTitle line 18 by your title.
 
-Save and enjoy !
+##### Restart
+Don't forget to restart
+```
+docker-compose up -d --force-recreate
+```
