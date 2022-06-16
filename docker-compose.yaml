@@ -37,7 +37,7 @@ services:
     networks:
       - semapps
     environment:
-      ADMIN_PASSWORD: "MyFusekiPassword"
+      ADMIN_PASSWORD: "MyJenaPassword"
 
   middleware:
     build:
