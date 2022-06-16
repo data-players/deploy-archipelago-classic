@@ -20,10 +20,10 @@ Some variables in the docker-compose file are default values. You need to replac
 - line 19 myEmail@myemail.fr
 - line 40 MyJenaPassword
 - line 57 MyJenaPassword
-- line 58 https://data.myDomain.com/ middleware URL
+- line 58 https://data.myDomain.com/ (middleware URL)
 - line 68 data.myDomain.com (middleware domain name)
-- line 82 https://data.myDomain.com/ middleware URL
-- line 83 MyMapBoxToken
+- line 82 https://data.myDomain.com/ (middleware URL)
+- line 83 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
 - line 92 myDomain.com (Your domain name)
 
 Of course you have to set up ur domain name and sub domain name to make it works !
