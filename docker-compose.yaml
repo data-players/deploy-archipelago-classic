@@ -2,7 +2,6 @@ version: '3.5'
 services:
   traefik:
     image: "traefik:v2.3"
-    container_name: "traefik"
     networks:
       - semapps
     command:
@@ -28,7 +27,6 @@ services:
 
   fuseki:
     image: semapps/jena-fuseki-webacl
-    container_name: fuseki
     volumes:
       - ./data/fuseki:/fuseki
       - ./data/staging:/staging
@@ -43,7 +41,6 @@ services:
     build:
       context: ./deploy/middleware
       dockerfile: Dockerfile
-    container_name: middleware
     depends_on:
       - fuseki
     volumes:
@@ -51,7 +48,7 @@ services:
       - ./middleware/jwt:/archipelago/middleware/jwt
       - ./middleware/uploads:/archipelago/middleware/uploads
     environment:
-      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki:3030/
+      - SEMAPPS_SPARQL_ENDPOINT=http://semapps/jena-fuseki-webacl:3030/
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=MyJenaPassword
@@ -73,7 +70,6 @@ services:
     build:
       context: ./deploy/frontend
       dockerfile: Dockerfile
-    container_name: frontend
     volumes:
       - ../addOn/MyLogo.png:/archipelago/frontend/addOn/logo192.png
       - ../addOn/MyLogo.png:/archipelago/frontend/addOn/logo512.png

@@ -3,11 +3,28 @@
 If you need to deploye a classic archipelago with no/low modification, this is the good place to be.
 However, if you want to custom your own archipelago use this repos https://github.com/data-players/deploy-archipelago-custom
 
-### introduction
+### Introduction
+
+#### Prerequisite
 
 First make sur you get docker and docker-compose install on your server.
 Make sure you have an usable domain name, then create 2 sub-domain for middleware and frontend (Exemple data.myDomain.com and myDomain.com)
 Of course you need a server working with linux.
+
+#### Local test
+
+You can test localy on your device by using the .dev docker-compose : 
+```
+docker-compose -f docker-compose.dev.yaml up
+```
+Frontend on http://localhost:4000/ (If u doon't )
+Middleware on http://localhost:3000/
+Fuseki database on http://localhost:3030 (user: admin, password : admin)
+You will get an error when creating some organisation :
+```
+index.js:209 Error: @semapps/geo-components : No access token in mapbox configuration
+```
+This is because MapBox Access Token is not define in the docker-compose file. This is not really a problem for local testing.
 
 ### 1 Fork the Deploye repo
 
