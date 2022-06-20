@@ -3,7 +3,7 @@
 If you need to deploye a classic archipelago with no/low modification, this is the good place to be.
 However, if you want to custom your own archipelago use this repos https://github.com/data-players/deploy-archipelago-custom
 
-### introduction
+### Introduction
 
 First make sur you get docker and docker-compose install on your server.
 Make sure you have an usable domain name, then create 2 sub-domain for middleware and frontend (Exemple data.myDomain.com and myDomain.com)
@@ -13,19 +13,34 @@ Of course you need a server working with linux.
 
 Fork this project to get your own version and work on it.
 
+#### Local test
+
+You can test localy on your device by using the .dev docker-compose : 
+```
+docker-compose -f docker-compose.dev.yaml up
+```
+Frontend on http://localhost:4000/ (If u doon't )
+Middleware on http://localhost:3000/
+Fuseki database on http://localhost:3030 (user: admin, password : admin)
+You will get an error when creating some organisation :
+```
+index.js:209 Error: @semapps/geo-components : No access token in mapbox configuration
+```
+This is because MapBox Access Token is not define in the docker-compose file. This is not really a problem for local testing.
+
 ### 2 Change exemple variable
 
 Some variables in the docker-compose file are default values. You need to replace them with yours to make it works.
-- line 19 myEmail@myemail.fr
-- line 40 MyJenaPassword
-- line 57 MyJenaPassword
-- line 58 https://data.myDomain.com/ (middleware URL)
-- line 68 data.myDomain.com (middleware domain name)
-- line 84 https://data.myDomain.com/ (middleware URL)
-- line 85 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
-- line 94 myDomain.com (Your domain name)
+- line 18 myEmail@myemail.fr
+- line 39 MyJenaPassword
+- line 55 MyJenaPassword
+- line 56 https://data.myDomain.com/ (middleware URL)
+- line 66 data.myDomain.com (middleware domain name)
+- line 81 https://data.myDomain.com/ (middleware URL)
+- line 82 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
+- line 91 myDomain.com (Your domain name)
 
-- line 60 myOidcClient 
+- line 58 myOidcClient 
   - option 1 : replace by "semapps-dp" and contact data-players to redirect your URI (contact@data-players.com)
   - option 2 : contact "les communs" to create your own OIDC client on https://chat.lescommuns.org/home canal "accueil" (it's a rocket chat)
 
