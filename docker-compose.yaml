@@ -50,7 +50,7 @@ services:
       - ./middleware/jwt:/archipelago/middleware/jwt
       - ./middleware/uploads:/archipelago/middleware/uploads
     environment:
-      - SEMAPPS_SPARQL_ENDPOINT=http://semapps/fuseki-classic:3030/
+      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki-classic:3030/
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=MyJenaPassword
