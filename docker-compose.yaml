@@ -54,7 +54,7 @@ services:
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=MyJenaPassword
       - SEMAPPS_HOME_URL=https://data.myDomain.com/
-      - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org//auth/realms/master/
+      - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/
       - SEMAPPS_OIDC_CLIENT_ID=myOidcClient
       - SEMAPPS_REDIS_URL=redis://redis:6379/0
     networks:
@@ -71,12 +71,6 @@ services:
     build:
       context: ./deploy/frontend
       dockerfile: Dockerfile
-    #volumes:
-    #  - ./addOn/MyLogo.png:/archipelago/frontend/public/logo192.png
-    #  - ./addOn/MyLogo.png:/archipelago/frontend/public/logo512.png
-    #  - ./addOn/App.js:/archipelago/frontend/src/App.js
-    #  - ./addOn/myFavicon.ico:/archipelago/frontend/public/favicon.ico
-    #  - ./addOn/myIndex.html:/archipelago/frontend/public/index.html
     environment:
       - REACT_APP_MIDDLEWARE_URL=https://data.myDomain.com/
       - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken
@@ -85,7 +79,7 @@ services:
       - semapps
     expose:
       - "4000"
-    command: bash -c "yarn build && serve -s build"
+    command: bash -c "cp -r ./addOn/* src && yarn build && serve -s build"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`myDomain.com`)"
@@ -102,6 +96,7 @@ services:
     networks:
       - semapps
     command: ["redis-server", "--appendonly", "yes"]
+
 
 networks:
   semapps:
