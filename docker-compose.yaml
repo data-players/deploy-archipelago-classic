@@ -44,6 +44,7 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - fuseki
+      - keycloak
     volumes:
       - ./middleware/logs:/archipelago/middleware/logs
       - ./middleware/jwt:/archipelago/middleware/jwt
@@ -54,8 +55,8 @@ services:
       - SEMAPPS_JENA_USER=admin
       - SEMAPPS_JENA_PASSWORD=MyJenaPassword
       - SEMAPPS_HOME_URL=https://data.myDomain.com/
-      - SEMAPPS_OIDC_ISSUER=https://login.lescommuns.org/auth/realms/master/
-      - SEMAPPS_OIDC_CLIENT_ID=myOidcClient
+      - 'SEMAPPS_OIDC_ISSUER=http://keycloak:8080/auth/realms/DP/'
+      - SEMAPPS_OIDC_CLIENT_ID=semapps
       - SEMAPPS_REDIS_URL=redis://redis:6379/0
     networks:
       - semapps
@@ -85,6 +86,28 @@ services:
       - "traefik.http.routers.frontend.rule=Host(`myDomain.com`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myresolver"
+
+keycloak:
+    image: jboss/keycloak
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_IMPORT: /tmp/realm-export.json
+      KEYCLOAK_FRONTEND_URL: 'https://login.myDomain.com/auth'
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_SCHEMA: public
+      DB_PASSWORD: password
+    depends_on:
+      - postgres
+    volumes:
+      - './deploy/keycloak/realm-export.json:/tmp/realm-export.json'
+    ports:
+      - '8080:8080'
+    networks:
+      - semapps
 
   redis:
     image: redis
