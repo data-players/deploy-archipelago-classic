@@ -1,1 +1,1 @@
-## Put your App.js file and logo.png here like in the exemple : https://github.com/data-players/deploy-archipelago-public-exemple
+## Replace favicon.ico and logo512 + logo 192 by your own. Don't forget to rename "favicon.ico" "loo512.png" and "logo192.png".
