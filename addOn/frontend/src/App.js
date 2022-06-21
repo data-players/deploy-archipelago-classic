@@ -9,23 +9,23 @@ import i18nProvider from './config/i18nProvider';
 import authProvider from './config/authProvider';
 import dataProvider from './config/dataProvider';
 import * as resources from './resources';
+import customTheme from './customTheme';
 
 const history = createHistory();
 const AppBarWithUserMenu = props => <AppBar userMenu={<UserMenu />} {...props} />;
 const LayoutWithUserMenu = props => <Layout {...props} appBar={AppBarWithUserMenu} />;
 
-theme.palette.primary.main = "#3BFF5E"
-
 const App = () => (
   <Admin
     disableTelemetry
     history={history}
-    title="Archipel"
+    // Change your App Name (In app bar)
+    title="MyArchipelago"
     authProvider={authProvider}
     dataProvider={dataProvider}
     i18nProvider={i18nProvider}
     layout={LayoutWithUserMenu}
-    theme={theme}
+    theme={customTheme}
     loginPage={LoginPage}
     logoutButton={LogoutButton}
     dashboard={HomePage}

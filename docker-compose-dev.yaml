@@ -36,6 +36,7 @@ services:
       - semapps
     ports:
       - '3000:3000'
+
   frontend:
     build:
       context: ./deploy/frontend
@@ -50,7 +51,7 @@ services:
       - semapps
     ports:
       - '4000:4000'
-    command: bash -c "cp -r ./addOn/* src && yarn build && serve -s build"
+    command: bash -c "cp -r ./addOn/frontend/* . && yarn build && serve -s build"
 
   redis:
     image: redis
