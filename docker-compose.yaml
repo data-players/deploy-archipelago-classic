@@ -93,7 +93,7 @@ services:
     image: jboss/keycloak
     environment:
       KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_PASSWORD: myKeycloakPassword
       KEYCLOAK_IMPORT: /tmp/realm-export.json
       KEYCLOAK_FRONTEND_URL: 'https://login.sandbox7.data-players.com/auth'
       DB_VENDOR: POSTGRES

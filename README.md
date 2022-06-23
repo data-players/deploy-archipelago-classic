@@ -6,7 +6,7 @@ However, if you want to custom your own archipelago use this repos https://githu
 ### Introduction
 
 First make sur you get docker and docker-compose install on your server.
-Make sure you have an usable domain name, then create 2 sub-domain for middleware and frontend (Exemple data.myDomain.com and myDomain.com)
+Make sure you have an usable domain name, then create 3 sub-domain for middleware, frontend, and authentification (Exemple data.myDomain.com, myDomain.com and login.myDomain.com)
 Of course you need a server working with linux.
 
 ### 1 Fork the Deploye repo
@@ -19,30 +19,30 @@ You can test localy on your device by using the .dev docker-compose :
 ```
 docker-compose -f docker-compose.dev.yaml up
 ```
-Frontend on http://localhost:4000/ (If u doon't )
+Frontend on http://localhost:4000/
 Middleware on http://localhost:3000/
 Fuseki database on http://localhost:3030 (user: admin, password : admin)
+keycloak on http://localhost:8080 (Keycloak is a custom OIDC)
 You will get an error when creating some organisation :
 ```
 index.js:209 Error: @semapps/geo-components : No access token in mapbox configuration
 ```
 This is because MapBox Access Token is not define in the docker-compose file. This is not really a problem for local testing.
 
-### 2 Change exemple variable
+### 2 Deploying on internet
 
 Some variables in the docker-compose file are default values. You need to replace them with yours to make it works.
 - line 18 myEmail@myemail.fr
 - line 39 MyJenaPassword
-- line 55 MyJenaPassword
-- line 56 https://data.myDomain.com/ (middleware URL)
-- line 66 data.myDomain.com (middleware domain name)
-- line 81 https://data.myDomain.com/ (middleware URL)
-- line 82 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
-- line 91 myDomain.com (Your domain name)
-
-- line 58 myOidcClient 
-  - option 1 : replace by "semapps-dp" and contact data-players to redirect your URI (contact@data-players.com)
-  - option 2 : contact "les communs" to create your own OIDC client on https://chat.lescommuns.org/home canal "accueil" (it's a rocket chat)
+- line 56 MyJenaPassword
+- line 57 https://data.myDomain.com/ (middleware URL)
+- line 67 data.myDomain.com (middleware domain name)
+- line 76 https://data.myDomain.com/ (middleware URL)
+- line 77 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
+- line 88 myDomain.com (Your domain name)
+- line 98 https://login.myDomain.com/auth (Login URL)
+- line 96 myKeycloakPassword (To access OIDC amdin page)
+- line 115 login.mydomain.com (Login domain name)
 
 Of course you have to set up your domain name and sub domain name in your domain provider to make it works !
 
@@ -56,29 +56,28 @@ docker-compose up -d
 
 If you need to force dockers to restart add : --force-recreate
 
-Now it's time to check your domain name in your faforite browser !
-Grontalution !
+Check in your favorite browser if it's work.
+
+Before testing your new app, you must configurate your OIDC to autorize connexion from your domain name "data".
+Go to https://login.mydomain.com/auth and click on administration console. Connect with admin and "myKeycloakPassword".
+On the left panel, click on Clients, then semapps as client ID.
+If you scroll down, you must see a line "Valid Redirect URIs. Add your middleware address + "/*" (exemple : https://data.mydomain.com/*)
 
 ### 4 Minor change on Archipelago
 
 If you want minor frontend change you can follow this step. Exemples : App Title, App Bar Color, Tab title and favicon.
-Uncomment line 77 -> 80 in the docker-compose file 
-Use the addOn directory in the repo to put your logo, App.js,index.html and favicon.ico (exemple here : https://github.com/data-players/deploy-archipelago-addon-exemple)
+Use the addOn directory in the repo to replace logo192/512.png, App.js, index.html and favicon.ico.
+logo192.png : App Bar Logo, change it by your own logo (same name).
+logo512.png : Ressource Logo, change it by your own (same name).
+App.js : App Bar title, replace "MyArchipelago" line 23.
+index.html : tab bar title, replace "MyArchipelago" line 18.
+favicon.ico : tab bar icon, replace the file by your own (same name).
 
-#### Exemple
+You can change the theme by owervriting customTheme.js, if you just need to change the App Bar color, replace css color "#28ccfb" line 8 by your selected color.
 
-##### Logo
-Put your logo inside this directory and name it MyLogo.png (of course you can change the name in the docker-compose file if the extension isn't the good one)
+You can easily change other file and custom your archipelago from this directory. But if you begin to change everithing, maybe you need a custom deploye. More optimised.
 
-##### Color and Title
-Create a new file name App.js in the public directory
-- line 21 change the title app name to get a new titlein your app bar
-- line 16 add this line theme.palette.primary.main = "select your css color"
-
-##### Tab title and icon
-Now you can change tab title and icon by adding 2 file in the public directory. You can look in the git exemple above.
-Add your favicon in the directory and rename it myFavicon.ico
-Add your index.html and rename it myIndex.html (take the one in exemple if it's easier) and juste replace YourTabTitle line 18 by your title.
+Of course you can also change middleware files by adding them into the addOn/middlewaredirectory. Same advise as frontend, rememeber that if you need more than simple change, you probably need a custom archipelago.
 
 ##### Restart
 Don't forget to restart
