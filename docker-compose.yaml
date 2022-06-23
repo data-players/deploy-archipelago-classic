@@ -15,7 +15,7 @@ services:
       - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
       - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
-      - "--certificatesresolvers.myresolver.acme.email=myEmail@myemail.fr"
+      - "--certificatesresolvers.myresolver.acme.email=tech@data-players.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
       - "80:80"
@@ -27,7 +27,7 @@ services:
 
   fuseki:
     image: semapps/jena-fuseki-webacl
-    container_name: fuseki-classic
+    container_name: fuseki
     volumes:
       - ./data/fuseki:/fuseki
       - ./data/staging:/staging
@@ -36,7 +36,7 @@ services:
     networks:
       - semapps
     environment:
-      ADMIN_PASSWORD: "MyJenaPassword"
+      ADMIN_PASSWORD: "admin"
 
   middleware:
     build:
@@ -50,11 +50,11 @@ services:
       - ./middleware/jwt:/archipelago/middleware/jwt
       - ./middleware/uploads:/archipelago/middleware/uploads
     environment:
-      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki-classic:3030/
+      - SEMAPPS_SPARQL_ENDPOINT=http://fuseki:3030/
       - SEMAPPS_MAIN_DATASET=localData
       - SEMAPPS_JENA_USER=admin
-      - SEMAPPS_JENA_PASSWORD=MyJenaPassword
-      - SEMAPPS_HOME_URL=https://data.myDomain.com/
+      - SEMAPPS_JENA_PASSWORD=admin
+      - SEMAPPS_HOME_URL=https://data.sandbox7.data-players.com/
       - 'SEMAPPS_OIDC_ISSUER=http://keycloak:8080/auth/realms/DP/'
       - SEMAPPS_OIDC_CLIENT_ID=semapps
       - SEMAPPS_REDIS_URL=redis://redis:6379/0
@@ -64,7 +64,7 @@ services:
       - "3000"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.middleware.rule=Host(`data.myDomain.com`)"
+      - "traefik.http.routers.middleware.rule=Host(`data.sandbox7.data-players.com`)"
       - "traefik.http.routers.middleware.entrypoints=websecure"
       - "traefik.http.routers.middleware.tls.certresolver=myresolver"
 
@@ -73,7 +73,7 @@ services:
       context: ./deploy/frontend
       dockerfile: Dockerfile
     environment:
-      - REACT_APP_MIDDLEWARE_URL=https://data.myDomain.com/
+      - REACT_APP_MIDDLEWARE_URL=https://data.sandbox7.data-players.com/
       - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken
       - PORT=4000
     volumes:
@@ -85,7 +85,7 @@ services:
     command: bash -c "cp -r ./addOn/frontend/* . && yarn build && serve -s build"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`myDomain.com`)"
+      - "traefik.http.routers.frontend.rule=Host(`sandbox7.data-players.com`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.routers.frontend.tls.certresolver=myresolver"
 
@@ -95,7 +95,7 @@ services:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: myKeycloakPassword
       KEYCLOAK_IMPORT: /tmp/realm-export.json
-      KEYCLOAK_FRONTEND_URL: 'https://login.myDomain.com/auth'
+      KEYCLOAK_FRONTEND_URL: 'https://login.sandbox7.data-players.com/auth'
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
       DB_DATABASE: keycloak
@@ -112,7 +112,7 @@ services:
       - semapps
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.keycloak.rule=Host(`login.myDomain.com`)"
+      - "traefik.http.routers.keycloak.rule=Host(`login.sandbox7.data-players.com`)"
       - "traefik.http.routers.keycloak.entrypoints=websecure"
       - "traefik.http.routers.keycloak.tls.certresolver=myresolver"
 

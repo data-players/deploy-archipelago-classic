@@ -3,17 +3,19 @@
 If you need to deploye a classic archipelago with no/low modification, this is the good place to be.
 However, if you want to custom your own archipelago use this repos https://github.com/data-players/deploy-archipelago-custom
 
-### Introduction
+## Introduction
 
-First make sur you get docker and docker-compose install on your server.
-Make sure you have an usable domain name, then create 3 sub-domain for middleware, frontend, and authentification (Exemple data.myDomain.com, myDomain.com and login.myDomain.com)
-Of course you need a server working with linux.
+First make sur you get docker, docker-compose and git install on your linux server.
+Make sure you have an usable domain name, then create 3 sub-domain :
+- middleware (Exemple : data.myDomain.com)
+- frontend (Exemple : myDomain.com)
+- authentification (Exemple login.myDomain.com)
 
-### 1 Fork the Deploye repo
+## 1 Fork the Deploye repo
 
 Fork this project to get your own version and work on it.
 
-#### Local test
+### Local test
 
 You can test localy on your device by using the .dev docker-compose : 
 ```
@@ -29,7 +31,7 @@ index.js:209 Error: @semapps/geo-components : No access token in mapbox configur
 ```
 This is because MapBox Access Token is not define in the docker-compose file. This is not really a problem for local testing.
 
-### 2 Deploying on internet
+## 2 Deploying on internet
 
 Some variables in the docker-compose file are default values. You need to replace them with yours to make it works.
 - line 18 myEmail@myemail.fr
@@ -46,7 +48,7 @@ Some variables in the docker-compose file are default values. You need to replac
 
 Of course you have to set up your domain name and sub domain name in your domain provider to make it works !
 
-### 3 Launch your archipelago
+## 3 Launch your archipelago
 
 Launch your app by making a 
 
@@ -58,12 +60,14 @@ If you need to force dockers to restart add : --force-recreate
 
 Check in your favorite browser if it's work.
 
-Before testing your new app, you must configurate your OIDC to autorize connexion from your domain name "data".
+Before testing your new app, you must configurate your OIDC to autorize connexion from your domain name "data" (See environement variable line 67 above).
 Go to https://login.mydomain.com/auth and click on administration console. Connect with admin and "myKeycloakPassword".
 On the left panel, click on Clients, then semapps as client ID.
 If you scroll down, you must see a line "Valid Redirect URIs. Add your middleware address + "/*" (exemple : https://data.mydomain.com/*)
 
-### 4 Minor change on Archipelago
+## Customisation
+
+#### Custom frontend
 
 If you want minor frontend change you can follow this step. Exemples : App Title, App Bar Color, Tab title and favicon.
 Use the addOn directory in the repo to replace logo192/512.png, App.js, index.html and favicon.ico.
@@ -77,9 +81,43 @@ You can change the theme by owervriting customTheme.js, if you just need to chan
 
 You can easily change other file and custom your archipelago from this directory. But if you begin to change everithing, maybe you need a custom deploye. More optimised.
 
-Of course you can also change middleware files by adding them into the addOn/middlewaredirectory. Same advise as frontend, rememeber that if you need more than simple change, you probably need a custom archipelago.
+#### Custom middleware
 
-##### Restart
+Of course you can also change middleware files by adding them into the addOn/middlewaredirectory. Same advise as frontend, rememeber that if you need more than simple changes, you probably need a custom archipelago.
+
+#### Custom Authentificator
+
+##### Do not change anything
+
+You can perfectly use the custom keycloak installed in the docker-compose.
+
+##### Use Les commun's OIDC
+
+###### Data-Players OIDC
+
+It is possible to use the les commun's OIDC, to doo it, you have to replace :
+- line 58 http://keycloak:8080/auth/realms/DP/' -> https://login.lescommuns.org//auth/realms/master/
+- line 59 semapps -> semapps-dp
+Then send an email to contact@data-players.com and give us your middleware domain name. Like in stape 3, we must authorize your connexion on our client.
+
+###### Les commun Custom OIDC
+
+You need to contact les communs if you need your own les commun's OIDC client.
+Ask in the rocket Chat for a "les communs" admins.
+https://chat.lescommuns.org/channel/accueil
+
+##### Other authentification method
+
+###### JWT
+https://www.npmjs.com/package/wait-on
+###### CAS
+https://semapps.org/docs/middleware/auth
+
+1 tel quel
+2 les commun
+3 d'autre system d'authentification que oicd, jwt / cas
+
+#### Restart
 Don't forget to restart
 ```
 docker-compose up -d --force-recreate
