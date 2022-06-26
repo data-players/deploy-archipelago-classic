@@ -17,7 +17,7 @@ Fork this project to get your own version and work on it.
 
 You can test localy on your device by using the .dev docker-compose : 
 ```
-docker-compose -f docker-compose.dev.yaml up
+docker-compose -f docker-compose-dev.yaml up
 ```
 Frontend on http://localhost:4000/
 Middleware on http://localhost:3000/
