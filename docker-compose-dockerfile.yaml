@@ -22,7 +22,8 @@ services:
 
   middleware:
     build:
-      dockerfile: ./deploy/middleware/Dockerfile-prod
+      context: ./deploy/middleware
+      dockerfile: Dockerfile
     depends_on:
       - fuseki
       - keycloak
