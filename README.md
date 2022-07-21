@@ -19,8 +19,9 @@ Fork this project to get your own version and work on it.
 
 You can test localy on your device by using the .dev docker-compose : 
 ```
-docker-compose -f docker-compose-dev.yaml up
+make start
 ```
+
 Frontend on http://localhost:4000/
 Middleware on http://localhost:3000/
 Fuseki database on http://localhost:3030 (user: admin, password : admin)
@@ -36,15 +37,15 @@ This is because MapBox Access Token is not define in the docker-compose file. Th
 Some variables in the docker-compose file are default values. You need to replace them with yours to make it works.
 - line 18 myEmail@myemail.fr
 - line 39 MyJenaPassword
-- line 56 MyJenaPassword
-- line 57 https://data.myDomain.com/ (middleware URL)
-- line 67 data.myDomain.com (middleware domain name)
-- line 76 https://data.myDomain.com/ (middleware URL)
-- line 77 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
-- line 88 myDomain.com (Your domain name)
-- line 98 https://login.myDomain.com/auth (Login URL)
-- line 96 myKeycloakPassword (To access OIDC amdin page)
-- line 115 login.mydomain.com (Login domain name)
+- line 64 MyJenaPassword
+- line 65 https://data.myDomain.com/ (middleware URL)
+- line 75 data.myDomain.com (middleware domain name)
+- line 84 https://data.myDomain.com/ (middleware URL)
+- line 85 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
+- line 96 myDomain.com (Your domain name)
+- line 104 myKeycloakPassword (To access OIDC amdin page)
+- line 106 https://login.myDomain.com/auth (Login URL)
+- line 123 login.mydomain.com (Login domain name)
 
 Of course you have to set up your domain name and sub domain name in your domain provider to make it works !
 
@@ -53,7 +54,7 @@ Of course you have to set up your domain name and sub domain name in your domain
 Launch your app by making a 
 
 ```
-docker-compose up -d
+make start-prod
 ```
 
 If you need to force dockers to restart add : --force-recreate
@@ -113,8 +114,8 @@ https://www.npmjs.com/package/wait-on
 ###### CAS
 https://semapps.org/docs/middleware/auth
 
-1 tel quel
-2 les commun
+1 Laisser le keycloak par défault
+2 les commun.org - Faire une demande sur le chat des communs https://chat.lescommuns.org/channel/accueil
 3 d'autre system d'authentification que oicd, jwt / cas
 
 #### Restart
@@ -122,3 +123,22 @@ Don't forget to restart
 ```
 docker-compose up -d --force-recreate
 ```
+
+## Other
+
+If you need to use local dockerfile, you can use :
+```
+make start-dockerfile 
+```
+instead.
+
+### compact
+
+To compact your data you can use make compact.
+You can also use :
+```
+make set-cron-prod
+```
+This will create a cron job to compact data every day at 4am.
+
+use set-cron to make it localy.

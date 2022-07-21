@@ -22,8 +22,7 @@ services:
 
   middleware:
     build:
-      context: ./deploy/middleware
-      dockerfile: Dockerfile
+      dockerfile: ./deploy/middleware/Dockerfile-prod
     depends_on:
       - fuseki
       - keycloak
@@ -47,7 +46,7 @@ services:
 
   frontend:
     build:
-      dockerfile: Dockerfile.front
+      dockerfile: ./deploy/frontend/Dockerfile-prod
     environment:
       - 'REACT_APP_MIDDLEWARE_URL=http://localhost:3000/'
       - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken

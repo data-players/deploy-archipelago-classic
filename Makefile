@@ -1,8 +1,8 @@
 DC= docker-compose
 path-cron = $(shell pwd)/compact-cron.sh
 path-cron-prod = $(shell pwd)/compact-cron-prod.sh
-prod= docker-compose-prod.yaml
-link= docker-compose-link.yaml
+prod= docker-compose -f docker-compose-prod.yaml
+dockerfile= docker-compose -f docker-compose-prod.yaml
 
 start: 
 	$(DC) up -d
@@ -14,25 +14,31 @@ logs:
 	$(DC) logs -f
 
 logs-prod:
-	$(DC) -f $(prod) logs -f
+	$(prod) logs -f
 
 start-prod: 
-	$(DC) -f $(prod) up -d
+	$(prod) up -d
 
 stop-prod: 
-	$(DC) -f $(prod) down
+	$(prod) down
 
-start-link: 
-	$(DC) -f $(link) up -d
+start-dockerfile: 
+	$(dockerfile) up -d
 
-stop-link: 
-	$(DC) -f $(link) down
+stop-dockerfile: 
+	$(dockerfile) down
+
+logs-dockerfile:
+	$(dockerfile) logs -f
 
 compact: 
 	$(DC) down && $(DC) up fuseki_compact && $(DC) up -d
 
 compact-prod:
-	$(DC) -f $(prod) down && $(DC) -f $(prod) up fuseki_compact && $(DC) -f $(prod) up -d
+ 	$(prod) down && $(prod) up fuseki_compact && $(prod) up -d
+
+compact-dockerfile:
+ 	$(dockerfile) down && $(dockerfile) up fuseki_compact && $(dockerfile) up -d
 
 set-compact-cron: 
 	(crontab -l 2>/dev/null; echo "0 4 * * * $(path-cron) >> /tmp/cronlog.txt") | crontab -
