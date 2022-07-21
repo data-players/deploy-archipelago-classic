@@ -35,7 +35,10 @@ compact-prod:
 	$(DC) -f $(prod) down && $(DC) -f $(prod) up fuseki_compact && $(DC) -f $(prod) up -d
 
 set-compact-cron: 
-	(crontab -l 2>/dev/null; echo "* 4 * * * $(path-cron) >> /tmp/cronlog.txt") | crontab -
+	(crontab -l 2>/dev/null; echo "0 4 * * * $(path-cron) >> /tmp/cronlog.txt") | crontab -
 
 set-compact-cron-prod: 
-	(crontab -l 2>/dev/null; echo "* 4 * * * $(path-cron-prod) >> /tmp/cronlog.txt") | crontab -
+	(crontab -l 2>/dev/null; echo "0 4 * * * $(path-cron-prod) >> /tmp/cronlog.txt") | crontab -
+
+prune-data:
+	sudo rm -rf ./data

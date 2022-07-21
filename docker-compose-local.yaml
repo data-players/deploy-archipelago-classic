@@ -47,8 +47,7 @@ services:
 
   frontend:
     build:
-      context: ./deploy/frontend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.front
     environment:
       - 'REACT_APP_MIDDLEWARE_URL=http://localhost:3000/'
       - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken
@@ -59,7 +58,6 @@ services:
       - semapps
     ports:
       - '4000:4000'
-    command: bash -c "cp -r ./addOn/frontend/* . && yarn build && serve -s build"
 
   redis:
     image: redis
