@@ -1,4 +1,4 @@
-FROM node:12.16-alpine
+FROM node:14.16-alpine
 
 # Default arguments
 ARG SELECTED_BRANCH=master

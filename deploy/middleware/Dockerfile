@@ -20,10 +20,8 @@ RUN git clone https://github.com/assemblee-virtuelle/archipelago.git /archipelag
 
 RUN git checkout $SELECTED_BRANCH
 
-ADD app /archipelago/middleware
+ADD ./deploy/middleware/app /archipelago/middleware
 WORKDIR /archipelago/middleware
-
-COPY ./addOn/middleware/ .
 
 RUN yarn install
 

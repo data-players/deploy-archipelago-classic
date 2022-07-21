@@ -1,8 +1,17 @@
 DC= docker-compose
 path-cron = $(shell pwd)/compact-cron.sh
-path-cron-prod = $(shell pwd)/compact-cron-prod.sh
-prod= docker-compose -f docker-compose-prod.yaml
-dockerfile= docker-compose -f docker-compose-prod.yaml
+path-cron-dev = $(shell pwd)/compact-cron-dev.sh
+dev= docker-compose -f docker-compose-dev.yaml
+dockerfile= docker-compose -f docker-compose-dev.yaml
+
+build:
+	$(DC) build --no-cache
+
+build-dev:
+	$(dev) build --no-cache
+
+build-dockerhub:
+	docker-compose -f docker-compose-dockerhub.yaml build
 
 start: 
 	$(DC) up -d
@@ -13,14 +22,14 @@ stop:
 logs:
 	$(DC) logs -f
 
-logs-prod:
-	$(prod) logs -f
+logs-dev:
+	$(dev) logs -f
 
-start-prod: 
-	$(prod) up -d
+start-dev: 
+	$(dev) up -d
 
-stop-prod: 
-	$(prod) down
+stop-dev: 
+	$(dev) down
 
 start-dockerfile: 
 	$(dockerfile) up -d
@@ -34,17 +43,17 @@ logs-dockerfile:
 compact: 
 	$(DC) down && $(DC) up fuseki_compact && $(DC) up -d
 
-compact-prod:
- 	$(prod) down && $(prod) up fuseki_compact && $(prod) up -d
+compact-dev:
+	$(dev) down && $(dev) up fuseki_compact && $(dev) up -d
 
 compact-dockerfile:
- 	$(dockerfile) down && $(dockerfile) up fuseki_compact && $(dockerfile) up -d
+	$(dockerfile) down && $(dockerfile) up fuseki_compact && $(dockerfile) up -d
 
 set-compact-cron: 
 	(crontab -l 2>/dev/null; echo "0 4 * * * $(path-cron) >> /tmp/cronlog.txt") | crontab -
 
-set-compact-cron-prod: 
-	(crontab -l 2>/dev/null; echo "0 4 * * * $(path-cron-prod) >> /tmp/cronlog.txt") | crontab -
+set-compact-cron-dev: 
+	(crontab -l 2>/dev/null; echo "0 4 * * * $(path-cron-dev) >> /tmp/cronlog.txt") | crontab -
 
 prune-data:
 	sudo rm -rf ./data

@@ -1,0 +1,46 @@
+version: '3.5'
+services:
+  middleware:
+    build:
+      dockerfile: ./deploy/middleware/Dockerfile.prod
+    depends_on:
+      - fuseki
+      - keycloak
+    volumes:
+      - './middleware/logs:/archipelago/middleware/logs'
+      - './middleware/jwt:/archipelago/middleware/jwt'
+      - './middleware/uploads:/archipelago/middleware/uploads'
+      - ./addOn:/archipelago/middleware/addOn
+    environment:
+      - 'SEMAPPS_SPARQL_ENDPOINT=http://fuseki:3030/'
+      - SEMAPPS_MAIN_DATASET=localData
+      - SEMAPPS_JENA_USER=admin
+      - SEMAPPS_JENA_PASSWORD=admin
+      - 'SEMAPPS_HOME_URL=http://localhost:3000/'
+      - 'SEMAPPS_OIDC_ISSUER=http://keycloak:8080/auth/realms/DP/'
+      - SEMAPPS_OIDC_CLIENT_ID=semapps
+      - 'SEMAPPS_REDIS_URL=redis://redis:6379/0'
+    command: bash -c "cp -r ./addOn/middleware/* . && yarn install && pm2 "
+    networks:
+      - semapps
+    ports:
+      - '3000:3000'
+
+  frontend:
+    build:
+      dockerfile: ./deploy/frontend/Dockerfile.prod
+    environment:
+      - 'REACT_APP_MIDDLEWARE_URL=http://localhost:3000/'
+      - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken
+      - PORT=4000
+    volumes:
+      - ./addOn:/archipelago/frontend/addOn
+    command: bash -c "cp -r ./addOn/frontend/* . && yarn install && yarn start"
+    networks:
+      - semapps
+    ports:
+      - '4000:4000'
+
+networks:
+  semapps:
+    name: semapps_network
