@@ -23,6 +23,8 @@ RUN git checkout $SELECTED_BRANCH
 ADD app /archipelago/middleware
 WORKDIR /archipelago/middleware
 
+COPY ./addOn/middleware/ .
+
 RUN yarn install
 
 EXPOSE 3000
