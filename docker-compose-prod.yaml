@@ -47,7 +47,8 @@ services:
       - ./data/fuseki:/fuseki
 
   middleware:
-    image: dataplayers/archipelago-middleware:0.1
+    build:
+      dockerfile: ./deploy/middleware/Dockerfile.prod
     depends_on:
       - fuseki
       - keycloak
@@ -75,7 +76,8 @@ services:
       - "traefik.http.routers.middleware.tls.certresolver=myresolver"
 
   frontend:
-    image: dataplayers/archipelago-frontend:0.1
+    build:
+      dockerfile: ./deploy/frontend/Dockerfile.prod    
     environment:
       - REACT_APP_MIDDLEWARE_URL=https://data.myDomain.com/
       - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken
@@ -86,7 +88,6 @@ services:
       - semapps
     expose:
       - "4000"
-    command: serve -s build
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.frontend.rule=Host(`myDomain.com`)"

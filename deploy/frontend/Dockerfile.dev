@@ -24,4 +24,4 @@ WORKDIR /archipelago/frontend
 
 RUN yarn install
 
-CMD serve -s build -l 4000
+CMD yarn start
