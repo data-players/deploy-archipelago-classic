@@ -82,8 +82,6 @@ services:
       - REACT_APP_MIDDLEWARE_URL=https://data.myDomain.com/
       - REACT_APP_MAPBOX_ACCESS_TOKEN=MyMapBoxToken
       - PORT=4000
-    volumes:
-      - ./addOn:/archipelago/frontend/addOn
     networks:
       - semapps
     expose:

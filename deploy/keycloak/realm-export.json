@@ -19,12 +19,8 @@
       "alwaysDisplayInConsole": true,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "https://data.sandbox3.data-players.com/*",
-        "https://data.sandbox2.data-players.com/*",
-        "https://data.sandbox4.data-players.com/*",
         "http://localhost:3000/*",
         "https://www.keycloak.org/app/*",
-        "https://data.sandbox.data-players.com/*"
       ],
       "webOrigins": [
         "*"
