@@ -19,7 +19,7 @@ Fork this project to get your own version and work on it.
 
 You can test localy on your device by using the .dev docker-compose : 
 ```
-make start
+make start-local
 ```
 
 Frontend on http://localhost:4000/
@@ -121,16 +121,9 @@ https://semapps.org/docs/middleware/auth
 #### Restart
 Don't forget to restart
 ```
-docker-compose up -d --force-recreate
-```
+make start-prod```
 
 ## Other
-
-If you need to use local dockerfile, you can use :
-```
-make start-dockerfile 
-```
-instead.
 
 ### compact
 
