@@ -74,11 +74,17 @@ If you scroll down, you must see a line "Valid Redirect URIs. Add your middlewar
 #### Custom frontend
 
 If you want minor frontend change you can follow this step. Exemples : App Title, App Bar Color, Tab title and favicon.
+
 Use the addOn directory in the repo to replace logo192/512.png, App.js, index.html and favicon.ico.
+
 logo192.png : App Bar Logo, change it by your own logo (same name).
+
 logo512.png : Ressource Logo, change it by your own (same name).
+
 App.js : App Bar title, replace "MyArchipelago" line 23.
+
 index.html : tab bar title, replace "MyArchipelago" line 18.
+
 favicon.ico : tab bar icon, replace the file by your own (same name).
 
 You can change the theme by owervriting customTheme.js, if you just need to change the App Bar color, replace css color "#28ccfb" line 8 by your selected color.
