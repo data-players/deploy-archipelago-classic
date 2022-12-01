@@ -46,7 +46,7 @@ Some variables in the docker-compose file are default values. You need to replac
 - line 84 https://data.myDomain.com/ (middleware URL)
 - line 85 MyMapBoxToken (obtain an access token : https://docs.mapbox.com/help/getting-started/access-tokens/)
 - line 96 myDomain.com (Your domain name)
-- line 104 myKeycloakPassword (To access OIDC amdin page)
+- line 104 myKeycloakPassword (To access OIDC admin page)
 - line 106 https://login.myDomain.com/auth (Login URL)
 - line 123 login.mydomain.com (Login domain name)
 
