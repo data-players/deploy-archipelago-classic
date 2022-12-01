@@ -71,6 +71,8 @@ If you scroll down, you must see a line "Valid Redirect URIs. Add your middlewar
 
 ## Customisation
 
+All customisation is based on te addOn directory.
+
 #### Custom frontend
 
 If you want minor frontend change you can follow this step. Exemples : App Title, App Bar Color, Tab title and favicon.
