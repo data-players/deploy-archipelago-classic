@@ -1,7 +1,9 @@
 # Deploy-archipelago-classic
 
 If you need to deploye a classic archipelago with no/low modification, this is the good place to be.
+
 However, if you want to custom your own archipelago use this repos https://github.com/data-players/deploy-archipelago-custom
+
 However, if you want to use dockerhub images and Data Players personnalisation use https://github.com/data-players/archipelago-run-dockerhub
 
 ## Introduction (for production)
