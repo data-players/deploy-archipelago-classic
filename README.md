@@ -3,13 +3,13 @@
 If you need to deploye a classic archipelago with no/low modification, this is the good place to be.
 However, if you want to custom your own archipelago use this repos https://github.com/data-players/deploy-archipelago-custom
 
-## Introduction
+## Introduction (for production)
 
 First make sur you get docker, docker-compose and git install on your linux server.
 Make sure you have an usable domain name, then create 3 sub-domain :
 - middleware (Exemple : data.myDomain.com)
 - frontend (Exemple : myDomain.com)
-- authentification (Exemple login.myDomain.com)
+- authentification (Exemple login.myDomain.com)(optional if you use sso and want domain login with same root than your app)
 
 ## 1 Fork the Deploye repo
 
