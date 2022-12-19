@@ -91,11 +91,11 @@ favicon.ico : tab bar icon, replace the file by your own (same name).
 
 You can change the theme by owervriting customTheme.js, if you just need to change the App Bar color, replace css color "#28ccfb" line 8 by your selected color.
 
-You can easily change other file and custom your archipelago from this directory. But if you begin to change everithing, maybe you need a custom deploye. More optimised.
+You can easily change other file and custom your archipelago from this directory. But if you begin to change everithing, maybe you need a custom deploy. More optimised.
 
 #### Custom middleware
 
-Of course you can also change middleware files by adding them into the addOn/middlewaredirectory. Same advise as frontend, rememeber that if you need more than simple changes, you probably need a custom archipelago.
+Of course you can also change middleware files by adding them into the addOn/middleware directory. Same advise as frontend, rememeber that if you need more than simple changes, you probably need a custom archipelago.
 
 #### Custom Authentificator
 
