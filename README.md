@@ -135,14 +135,8 @@ https://semapps.org/docs/middleware/auth
 Don't forget to restart
 ```
 make start-prod```
-
-## Other
-
-### compact
-
-To compact your data you can use make compact.
-You can also use :
 ```
+#### Compact & CRON
 make set-cron-prod
 ```
 This will create a cron job to compact data every day at 4am.
