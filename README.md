@@ -118,16 +118,16 @@ You need to contact les communs if you need your own les commun's OIDC client.
 Ask in the rocket Chat for a "les communs" admins.
 https://chat.lescommuns.org/channel/accueil
 
+##### Use other OIDC
+
+you can use any OIDC server you want 
+
 ##### Other authentification method
 
 ###### JWT
 https://www.npmjs.com/package/wait-on
 ###### CAS
 https://semapps.org/docs/middleware/auth
-
-1 Laisser le keycloak par défault
-2 les commun.org - Faire une demande sur le chat des communs https://chat.lescommuns.org/channel/accueil
-3 d'autre system d'authentification que oicd, jwt / cas
 
 #### Restart
 Don't forget to restart
