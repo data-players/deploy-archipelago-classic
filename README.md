@@ -14,7 +14,7 @@ Make sure you have an usable domain name, then create 3 sub-domain :
 - frontend (Exemple : myDomain.com)
 - authentification (Exemple login.myDomain.com)(optional if you use sso and want domain login with same root than your app)
 
-## 1 Fork the Deploye repo
+## 1 Fork this deploy repo
 
 Fork this project to get your own version and work on it.
 
