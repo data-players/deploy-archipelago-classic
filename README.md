@@ -105,10 +105,12 @@ You can perfectly use the custom keycloak installed in the docker-compose.
 
 ##### Use Les commun's OIDC
 
+It is possible to use the les commun's OIDC, to doo it, you have to replace :
+
+- line 58 http://keycloak:8080/auth/realms/DP/' -> https://login.lescommuns.org//auth/realms/master/
+
 ###### Data-Players OIDC
 
-It is possible to use the les commun's OIDC, to doo it, you have to replace :
-- line 58 http://keycloak:8080/auth/realms/DP/' -> https://login.lescommuns.org//auth/realms/master/
 - line 59 semapps -> semapps-dp
 Then send an email to contact@data-players.com and give us your middleware domain name. Like in stape 3, we must authorize your connexion on our client.
 
