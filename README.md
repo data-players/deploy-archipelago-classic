@@ -71,7 +71,7 @@ If you scroll down, you must see a line "Valid Redirect URIs. Add your middlewar
 
 ## Customisation
 
-All customisation is based on te addOn directory.
+All customisation is based on the addOn directory.
 
 #### Custom frontend
 
